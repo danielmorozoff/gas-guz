@@ -1,4 +1,4 @@
 gas-guz
 =======
 
-Guzzle some gas! This is gas guz's repo for source code.
+THIS IS GAS GUZ's development branch. Please push your code to this :D
