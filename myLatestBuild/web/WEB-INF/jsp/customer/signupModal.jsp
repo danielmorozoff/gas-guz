@@ -20,13 +20,13 @@
   <legend>Please share some information with us.</legend>
 	 <fieldset>
 	 	<div  style=" width:30%">
-			<label class="control-label" for="fName">	<b>First Name:</b>
+			<label class="control-label" for="fname">	<b>First Name:</b>
 			</label>
-			<label class="control-label" for="lName">	<b>Last Name:</b>	
+			<label class="control-label" for="lname">	<b>Last Name:</b>	
 			</label>
 			<label class="control-label" for="email">	<b>Email:</b>	
 			</label>	
-			<label class="control-label" for="userName">	<b>Username:</b>	
+			<label class="control-label" for="username">	<b>Username:</b>	
 			</label>	
 			<label class="control-label" for="password">	<b>Password:</b>	
 			</label>
@@ -36,10 +36,10 @@
 	  </fieldset>	
 	
 <div  style="margin-left:30%;margin-top:-42%">
-	<input type="text" style="background:rgba(255,0,0,.5)" class='singInp' name='fName' id="fName" />
-	<input type="text" style="background:rgba(255,0,0,.5)" class=' singInp' name='lName' id="lName" />  
+	<input type="text" style="background:rgba(255,0,0,.5)" class='singInp' name='fname' id="fname" />
+	<input type="text" style="background:rgba(255,0,0,.5)" class=' singInp' name='lname' id="lname" />  
 	<input type="text" style="background:rgba(255,0,0,.5)" class=' singInp' name='email' id="email" />
-	<input type="text" style="background:rgba(255,0,0,.5)" class=' singInp' name='userName' id="userName" />
+	<input type="text" style="background:rgba(255,0,0,.5)" class=' singInp' name='username' id="username" />
 	<input  class=' singInp' style="background:rgba(255,0,0,.5)" type="password" name='password' id="password"/>
 	<input  class=' singInp' style="background:rgba(255,0,0,.5)" type="password" name='password2' id="password2" />
 </div>
@@ -72,11 +72,11 @@ $(document).ready(function(){
 			var iObj = $(this);
 		
 			switch(iObj.attr('name')){
-				case "fName":
+				case "fname":
 					if(iObj.val().length>0)iObj.css('background',"rgba(0,255,0,.5)");
 					else iObj.css('background',"rgba(255,0,0,.5)");
 				break;
-				case "lName":
+				case "lname":
 					if(iObj.val().length>0)iObj.css('background',"rgba(0,255,0,.5)");
 					else iObj.css('background',"rgba(255,0,0,.5)");	
 				break;
@@ -92,7 +92,7 @@ $(document).ready(function(){
 							iObj.css('background',"rgba(0,255,0,.5)");
 						} 
 				break;
-				case "userName":
+				case "username":
 					if(iObj.val().length>=6) iObj.css('background',"rgba(0,255,0,.5)");
 					else iObj.css('background',"rgba(255,0,0,.5)");	
 				break;
@@ -143,11 +143,13 @@ $(document).ready(function(){
 						eval("submissionObj."+$(this).attr('name')+"='"+$(this).val()+"'");
 					});
 			
-			$.post('/signUp',{"userObj":JSON.stringify(submissionObj)},function(resp){
+			$.post('customer/signup.html?method=signup',
+			    {"fname":$("#fname").val(), "lname":$("#lname").val(), "email":$("#email").val(), "username":$("#username").val(), "password":$("#password").val()},
+			    function(resp){
 				if(resp.indexOf('userCreated_')>-1){
-					var userName = resp.substring(resp.indexOf('_')+1);
+					var username = resp.substring(resp.indexOf('_')+1);
 					$('#loginDiv').empty();
-					$('#loginDiv').append('<h5> <div class="btn-group"> <a class="btn btn-xsmall btn-inverse dropdown-toggle" data-toggle="dropdown" style="background:#258800" href="#"><span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#"> <i class="icon-pencil"></i> &nbsp;Flagged Documents</a></li><li><a href="#" onClick="logout()"><i class="icon-leaf"></i> &nbsp;Logout</a></li></ul>&nbsp;<i class="icon-user icon-white"></i> <a target="_blank" href="/userDashboard/userName_'+userName+'">'+userName+'</a></div></h5>');
+					$('#loginDiv').append('<h5> <div class="btn-group"> <a class="btn btn-xsmall btn-inverse dropdown-toggle" data-toggle="dropdown" style="background:#258800" href="#"><span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#"> <i class="icon-pencil"></i> &nbsp;Flagged Documents</a></li><li><a href="#" onClick="logout()"><i class="icon-leaf"></i> &nbsp;Logout</a></li></ul>&nbsp;<i class="icon-user icon-white"></i> <a target="_blank" href="/userDashboard/userName_'+username+'">'+username+'</a></div></h5>');
 
 					$('#signupModal').modal('hide');
 					$('.singInp').each(function(){

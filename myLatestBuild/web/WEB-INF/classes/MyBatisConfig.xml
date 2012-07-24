@@ -16,9 +16,6 @@ PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
     <setting name="defaultStatementTimeout" value="25000" />
   </settings>
 
-  <typeAliases>
-  </typeAliases>
-
   <environments default="test">
     <environment id="test">
       <transactionManager type="JDBC" />
@@ -37,6 +34,6 @@ PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
   </environments>
 
   <mappers>
-    <mapper resource="com/gasgzu/model/mybatis/xml/AccountMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/AccountMapper.xml" />
   </mappers>
 </configuration>

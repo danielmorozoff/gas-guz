@@ -21,9 +21,17 @@
       <param-value>60000</param-value>
     </init-param>
   </filter>
+  <filter>
+    <filter-name>sessionFilter</filter-name>
+    <filter-class>com.gasguz.util.SessionFilter</filter-class>
+  </filter>
 
   <filter-mapping>
     <filter-name>logFilter</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+ <filter-mapping>
+    <filter-name>sessionFilter</filter-name>
     <url-pattern>*.html</url-pattern>
   </filter-mapping>
 

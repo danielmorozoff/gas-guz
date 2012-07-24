@@ -5,6 +5,10 @@
 <struts-config>
   <!-- ========== Form Bean Definitions ===================================	-->
   <form-beans>
+ 	<form-bean name="ajaxForm" type="org.apache.struts.action.DynaActionForm">
+      <form-property name="ajaxObj" type="java.lang.String" />
+    </form-bean>
+  
     <form-bean name="logonForm" type="org.apache.struts.action.DynaActionForm">
       <form-property name="username" type="java.lang.String" />
       <form-property name="password" type="java.lang.String" />
@@ -44,7 +48,10 @@
     <!-- *************************************************** Customer Actions ************************************************* -->
     <!-- ********************************************************************************************************************** -->
     <action path="/" forward=".customer.default"/>
-
+	
+    <action path="/customer/signup" type="com.gasguz.action.customer.CustomerAjaxAction" name="accountForm" validate="false" scope="request" parameter="method"/>
+  
+  
     <!-- ********************************************************************************************************************** -->
     <!-- *************************************************** Vendor Actions *************************************************** -->
     <!-- ********************************************************************************************************************** -->

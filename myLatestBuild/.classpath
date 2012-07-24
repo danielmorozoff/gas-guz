@@ -57,6 +57,6 @@
 	<classpathentry kind="lib" path="ant/hibernate-tools.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/mybatis-3.1.1.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/mysql-connector-java-5.1.20-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/danielmorozoff/Desktop/GasGuz/GasGuz_Dev/tomcat_7.0.27/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/opt/apps/apache-tomcat-7.0.27/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

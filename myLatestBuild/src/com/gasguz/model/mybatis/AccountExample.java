@@ -422,6 +422,76 @@ public class AccountExample {
             return (Criteria) this;
         }
 
+        public Criteria andFnameIsNull() {
+            addCriterion("a.FNAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameIsNotNull() {
+            addCriterion("a.FNAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameEqualTo(String value) {
+            addCriterion("a.FNAME =", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameNotEqualTo(String value) {
+            addCriterion("a.FNAME <>", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameGreaterThan(String value) {
+            addCriterion("a.FNAME >", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameGreaterThanOrEqualTo(String value) {
+            addCriterion("a.FNAME >=", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameLessThan(String value) {
+            addCriterion("a.FNAME <", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameLessThanOrEqualTo(String value) {
+            addCriterion("a.FNAME <=", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameLike(String value) {
+            addCriterion("a.FNAME like", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameNotLike(String value) {
+            addCriterion("a.FNAME not like", value, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameIn(List<String> values) {
+            addCriterion("a.FNAME in", values, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameNotIn(List<String> values) {
+            addCriterion("a.FNAME not in", values, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameBetween(String value1, String value2) {
+            addCriterion("a.FNAME between", value1, value2, "fname");
+            return (Criteria) this;
+        }
+
+        public Criteria andFnameNotBetween(String value1, String value2) {
+            addCriterion("a.FNAME not between", value1, value2, "fname");
+            return (Criteria) this;
+        }
+
         public Criteria andLnameIsNull() {
             addCriterion("a.LNAME is null");
             return (Criteria) this;

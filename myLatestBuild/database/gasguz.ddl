@@ -5,6 +5,7 @@
         ID bigint not null auto_increment,
         USERNAME varchar(255),
         PASSWORD varchar(255),
+        FNAME varchar(255),
         LNAME varchar(255),
         EMAIL varchar(255),
         ADD_DTTM date,

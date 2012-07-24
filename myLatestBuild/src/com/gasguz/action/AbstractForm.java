@@ -15,9 +15,7 @@ public abstract class AbstractForm extends ActionForm {
   private static final long serialVersionUID = 1L;
 
   private Long id = new Long(-1);
-  private String addUerId;
   private Date addDttm;
-  private String lastupdateUserId;
   private Date lastupdateDttm;
   
 
@@ -38,25 +36,11 @@ public abstract class AbstractForm extends ActionForm {
     }
   }
 
-  public String getAddUerId() {
-    return addUerId;
-  }
-  public void setAddUerId(String addUerId) {
-    this.addUerId = addUerId == null ? null : addUerId.trim();
-  }
-
   public Date getAddDttm() {
     return addDttm;
   }
   public void setAddDttm(Date addDttm) {
     this.addDttm = addDttm;
-  }
-
-  public String getLastupdateUserId() {
-    return lastupdateUserId;
-  }
-  public void setLastupdateUserId(String lastupdateUserId) {
-    this.lastupdateUserId = lastupdateUserId == null ? null : lastupdateUserId.trim();
   }
 
   public Date getLastupdateDttm() {
