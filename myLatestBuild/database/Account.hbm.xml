@@ -9,13 +9,13 @@
       <generator class="identity"/>
     </id>
 
-    <property name="username"       type="string" column="USERNAME"/>
-    <property name="password"       type="string" column="PASSWORD"/>
-    <property name="fname"          type="string" column="FNAME"/>
-    <property name="lname"          type="string" column="LNAME"/>
-    <property name="email"          type="string" column="EMAIL"/>
-    <property name="addDttm"        type="date" column="ADD_DTTM"/>
-    <property name="lastupdateDTTM" type="date" column="LASTUPDATE_DTTM"/>
+    <property name="username"       type="string" column="USERNAME" not-null="true" unique-key="GG_ACCOUNT_U01"/>
+    <property name="password"       type="string" column="PASSWORD" not-null="true"/>
+    <property name="fname"          type="string" column="FNAME" not-null="true"/>
+    <property name="lname"          type="string" column="LNAME" not-null="true"/>
+    <property name="email"          type="string" column="EMAIL" not-null="true"/>
+    <property name="addDttm"        type="date" column="ADD_DTTM" not-null="true"/>
+    <property name="lastupdateDTTM" type="date" column="LASTUPDATE_DTTM" not-null="true"/>
 
   </class>
 </hibernate-mapping>

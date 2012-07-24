@@ -17,7 +17,8 @@ public class CustomerMgr extends AbstractBaseMgr {
 
   public int saveSignup(Account account) throws Exception {
     try {
-      AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);      
+      AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+      setMetaInsert(account);
       return mapper.insert(account);
     } catch (Exception e) {
       log.error(e.getMessage(), e);
