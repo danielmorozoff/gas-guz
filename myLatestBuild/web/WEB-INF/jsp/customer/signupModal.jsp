@@ -10,7 +10,7 @@
 </style> 
 <div class="modal fade hide" id="signupModal">
   <div class="modal-header">
-    <button class="close" data-dismiss="modal">×</button>
+    <button class="close" data-dismiss="modal">X</button>
     <h3>GasGuz Signup</h3>
   </div>
 <div class="modal-body">
