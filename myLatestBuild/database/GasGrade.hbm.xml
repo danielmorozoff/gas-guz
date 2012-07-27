@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="com.gasguz.model">
+  <class name="GasGrade" table="GG_GAS_GRADE" mutable="false">
+    <id name="id" type="long" column="ID">
+      <generator class="identity"/>
+    </id>
+
+    <property name="name"          type="string" column="NAME"          not-null="true"/>
+    <property name="octane"        type="string" column="OCTANE"        not-null="true"/>
+    <property name="date_created"  type="date"   column="DATE_CREATED"  not-null="true"/>
+    <property name="date_modified" type="date"   column="DATE_MODIFIED" not-null="true"/>
+
+  </class>
+</hibernate-mapping>

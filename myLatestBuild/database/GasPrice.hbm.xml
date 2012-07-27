@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="com.gasguz.model">
+  <class name="GasPrice" table="GG_GAS_PRICE" mutable="false">
+    <id name="id" type="long" column="ID">
+      <generator class="identity"/>
+    </id>
+
+    <property name="vendor_location_id" type="long"        column="VENDOR_LOCATION_ID" not-null="true"/>
+    <property name="gas_grade_id"       type="long"        column="GAS_GRADE_ID"       not-null="true"/>
+    <property name="price"              type="big_decimal" column="PRICE"              not-null="true" precision="17" scale="3"/>
+    <property name="last_id"            type="long"        column="LAST_ID"            not-null="false"/>
+    <property name="date_created"       type="date"        column="DATE_CREATED"       not-null="true"/>
+    <property name="date_modified"      type="date"        column="DATE_MODIFIED"      not-null="true"/>
+
+  </class>
+</hibernate-mapping>
