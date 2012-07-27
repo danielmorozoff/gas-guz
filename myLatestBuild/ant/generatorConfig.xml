@@ -33,7 +33,57 @@
       <property name="enableSubPackages" value="false" />
     </javaClientGenerator>
 
-    <table schema="gasguz" tableName="GG_ACCOUNT" domainObjectName="Account" alias="a">
+    <table schema="gasguz" tableName="GG_AUTHORIZED_USER" domainObjectName="AuthorizedUser" alias="au">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_GAS_GRADE" domainObjectName="GasGrade" alias="gg">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_GAS_PRICE" domainObjectName="GasPrice" alias="gp">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_ROLE" domainObjectName="Role" alias="r">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_TRANSACTION" domainObjectName="Transaction" alias="t">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_USER" domainObjectName="User" alias="u">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_USER_GAS_AMOUNT" domainObjectName="UserGasAmount" alias="uga">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_USER_ROLE" domainObjectName="UserRole" alias="ur">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_USER_VENDOR" domainObjectName="UserVendor" alias="uv">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_VENDOR" domainObjectName="Vendor" alias="v">
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+      <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 
+    </table>
+    <table schema="gasguz" tableName="GG_VENDOR_LOCATION" domainObjectName="VendorLocation" alias="vl">
       <property name="useActualColumnNames" value="false"/>
       <property name="ignoreQualifiersAtRuntime" value="true"/>
       <generatedKey column="ID" identity="true" sqlStatement="MySql" /> 

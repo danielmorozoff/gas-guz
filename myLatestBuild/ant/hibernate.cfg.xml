@@ -34,7 +34,18 @@
     <!-- for schemaexport ant task (format option in hbm2dll) -->
     <property name="hibernate.format_sql">true</property>
     
-    <mapping resource="Account.hbm.xml"/>
+
+    <mapping resource="AuthorizedUser.hbm.xml"/>
+    <mapping resource="GasGrade.hbm.xml"/>
+    <mapping resource="GasPrice.hbm.xml"/>
+    <mapping resource="Role.hbm.xml"/>
+    <mapping resource="Transaction.hbm.xml"/>
+    <mapping resource="User.hbm.xml"/>
+    <mapping resource="UserGasAmount.hbm.xml"/>
+    <mapping resource="UserRole.hbm.xml"/>
+    <mapping resource="UserVendor.hbm.xml"/>
+    <mapping resource="Vendor.hbm.xml"/>
+    <mapping resource="VendorLocation.hbm.xml"/>
      
   </session-factory>
 </hibernate-configuration>

@@ -11,7 +11,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.gasguz.mgr.CustomerMgr;
 import com.gasguz.model.dao.GasGuzDAO;
-import com.gasguz.model.mybatis.Account;
+import com.gasguz.model.mybatis.User;
 
 
 public class CustomerAjaxAction extends AbstractCustomerAction {
@@ -27,7 +27,7 @@ public class CustomerAjaxAction extends AbstractCustomerAction {
 
   public ActionForward signup(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
     try {
-      Account oForm = (Account)form;
+      User oForm = (User)form;
       CustomerMgr mgr = new CustomerMgr(GasGuzDAO.getSession());
       int result = mgr.saveSignup(oForm);
       sendResponse(response, "userCreated_"+oForm.getUsername(), "text/plain");

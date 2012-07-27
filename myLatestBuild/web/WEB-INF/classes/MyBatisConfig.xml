@@ -34,6 +34,16 @@ PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
   </environments>
 
   <mappers>
-    <mapper resource="com/gasguz/model/mybatis/xml/AccountMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/AuthorizedUserMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/GasGradeMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/GasPriceMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/RoleMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/TransactionMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/UserMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/UserGasAmountMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/UserRoleMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/UserVendorMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/VendorMapper.xml" />
+    <mapper resource="com/gasguz/model/mybatis/xml/VendorLocationMapper.xml" />
   </mappers>
 </configuration>

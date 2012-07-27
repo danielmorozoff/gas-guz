@@ -4,8 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 
-import com.gasguz.model.mybatis.Account;
-import com.gasguz.model.mybatis.dao.AccountMapper;
+import com.gasguz.model.mybatis.User;
+import com.gasguz.model.mybatis.dao.UserMapper;
 
 public class CustomerMgr extends AbstractBaseMgr {
   private static Log log = LogFactory.getLog(CustomerMgr.class);
@@ -15,9 +15,9 @@ public class CustomerMgr extends AbstractBaseMgr {
     super(sqlSession);
   }
 
-  public int saveSignup(Account account) throws Exception {
+  public int saveSignup(User account) throws Exception {
     try {
-      AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+      UserMapper mapper = sqlSession.getMapper(UserMapper.class);
       setMetaInsert(account);
       return mapper.insert(account);
     } catch (Exception e) {
