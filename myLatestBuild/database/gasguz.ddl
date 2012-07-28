@@ -27,8 +27,8 @@
         FNAME varchar(255) not null,
         LNAME varchar(255) not null,
         PIN varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID)
     );
 
@@ -36,8 +36,8 @@
         ID bigint not null auto_increment,
         NAME varchar(255) not null,
         OCTANE varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID)
     );
 
@@ -47,8 +47,8 @@
         GAS_GRADE_ID bigint not null,
         PRICE decimal(17,3) not null,
         LAST_ID bigint,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID)
     );
 
@@ -56,8 +56,8 @@
         ID bigint not null auto_increment,
         DESCRIPTION varchar(255) not null,
         STATUS varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID)
     );
 
@@ -66,11 +66,12 @@
         USER_ID bigint not null,
         VENDOR_LOCATION_ID bigint not null,
         GAS_GRADE_ID bigint not null,
-        COST decimal(17,3) not null,
+        COST decimal(17,3),
         AMOUNT decimal(17,3) not null,
         TRANSACTION_TYPE varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        TRANSACTION_DATE datetime not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID)
     );
 
@@ -83,8 +84,8 @@
         EMAIL varchar(255) not null,
         PHONE varchar(255) not null,
         STATUS varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID),
         unique (USERNAME)
     );
@@ -95,8 +96,8 @@
         VENDOR_LOCATION_ID bigint not null,
         GAS_GRADE_ID bigint not null,
         AMOUNT decimal(17,3) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID),
         unique (USER_ID, VENDOR_LOCATION_ID, GAS_GRADE_ID)
     );
@@ -106,8 +107,8 @@
         USER_ID bigint not null,
         ROLE_ID bigint not null,
         STATUS varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID),
         unique (USER_ID, ROLE_ID)
     );
@@ -117,8 +118,8 @@
         USER_ID bigint not null,
         VENDOR_ID bigint not null,
         STATUS varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID),
         unique (USER_ID, VENDOR_ID)
     );
@@ -129,8 +130,8 @@
         EMAIL varchar(255) not null,
         PHONE varchar(255) not null,
         STATUS varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID)
     );
 
@@ -141,7 +142,7 @@
         ADDRESS varchar(255) not null,
         PHONE varchar(255) not null,
         STATUS varchar(255) not null,
-        DATE_CREATED date not null,
-        DATE_MODIFIED date not null,
+        DATE_CREATED datetime not null,
+        DATE_MODIFIED datetime not null,
         primary key (ID)
     );

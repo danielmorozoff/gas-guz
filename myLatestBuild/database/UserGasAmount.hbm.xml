@@ -13,8 +13,8 @@
     <property name="vendor_location_id" type="long"        column="VENDOR_LOCATION_ID" not-null="true" unique-key="GG_USER_GAS_AMOUNT_U01"/>
     <property name="gas_grade_id"       type="long"        column="GAS_GRADE_ID"       not-null="true" unique-key="GG_USER_GAS_AMOUNT_U01"/>
     <property name="amount"             type="big_decimal" column="AMOUNT"             not-null="true" precision="17" scale="3"/>
-    <property name="date_created"       type="date"        column="DATE_CREATED"       not-null="true"/>
-    <property name="date_modified"      type="date"        column="DATE_MODIFIED"      not-null="true"/>
+    <property name="date_created"       type="timestamp"   column="DATE_CREATED"       not-null="true"/>
+    <property name="date_modified"      type="timestamp"   column="DATE_MODIFIED"      not-null="true"/>
 
   </class>
 </hibernate-mapping>

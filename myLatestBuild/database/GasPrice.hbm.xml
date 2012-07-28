@@ -13,8 +13,8 @@
     <property name="gas_grade_id"       type="long"        column="GAS_GRADE_ID"       not-null="true"/>
     <property name="price"              type="big_decimal" column="PRICE"              not-null="true" precision="17" scale="3"/>
     <property name="last_id"            type="long"        column="LAST_ID"            not-null="false"/>
-    <property name="date_created"       type="date"        column="DATE_CREATED"       not-null="true"/>
-    <property name="date_modified"      type="date"        column="DATE_MODIFIED"      not-null="true"/>
+    <property name="date_created"       type="timestamp"   column="DATE_CREATED"       not-null="true"/>
+    <property name="date_modified"      type="timestamp"   column="DATE_MODIFIED"      not-null="true"/>
 
   </class>
 </hibernate-mapping>

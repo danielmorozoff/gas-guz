@@ -9,12 +9,12 @@
       <generator class="identity"/>
     </id>
 
-    <property name="userId"        type="long"   column="USER_ID"       not-null="true"/>
-    <property name="fname"         type="string" column="FNAME"         not-null="true"/>
-    <property name="lname"         type="string" column="LNAME"         not-null="true"/>
-    <property name="pin"           type="string" column="PIN"           not-null="true"/>
-    <property name="date_created"  type="date"   column="DATE_CREATED"  not-null="true"/>
-    <property name="date_modified" type="date"   column="DATE_MODIFIED" not-null="true"/>
+    <property name="userId"        type="long"      column="USER_ID"       not-null="true"/>
+    <property name="fname"         type="string"    column="FNAME"         not-null="true"/>
+    <property name="lname"         type="string"    column="LNAME"         not-null="true"/>
+    <property name="pin"           type="string"    column="PIN"           not-null="true"/>
+    <property name="date_created"  type="timestamp" column="DATE_CREATED"  not-null="true"/>
+    <property name="date_modified" type="timestamp" column="DATE_MODIFIED" not-null="true"/>
 
   </class>
 </hibernate-mapping>

@@ -9,10 +9,10 @@
       <generator class="identity"/>
     </id>
 
-    <property name="name"          type="string" column="NAME"          not-null="true"/>
-    <property name="octane"        type="string" column="OCTANE"        not-null="true"/>
-    <property name="date_created"  type="date"   column="DATE_CREATED"  not-null="true"/>
-    <property name="date_modified" type="date"   column="DATE_MODIFIED" not-null="true"/>
+    <property name="name"          type="string"    column="NAME"          not-null="true"/>
+    <property name="octane"        type="string"    column="OCTANE"        not-null="true"/>
+    <property name="date_created"  type="timestamp" column="DATE_CREATED"  not-null="true"/>
+    <property name="date_modified" type="timestamp" column="DATE_MODIFIED" not-null="true"/>
 
   </class>
 </hibernate-mapping>
