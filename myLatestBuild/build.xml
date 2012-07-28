@@ -463,8 +463,7 @@
       driver="com.mysql.jdbc.Driver"
       url="jdbc:mysql://localhost:3306/gasguz?zeroDateTimeBehavior=convertToNull"
       userid="gguser"
-      password="g0tga$2012"
-      schema="gasguz">
+      password="g0tga$2012">
 			<operation type="INSERT"
         src="${basedir}/database/data.xml"
         format="flat"/>
