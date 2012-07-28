@@ -11,8 +11,8 @@
     <result column="gp_GAS_GRADE_ID" property="gasGradeId" jdbcType="BIGINT" />
     <result column="gp_PRICE" property="price" jdbcType="DECIMAL" />
     <result column="gp_LAST_ID" property="lastId" jdbcType="BIGINT" />
-    <result column="gp_DATE_CREATED" property="dateCreated" jdbcType="DATE" />
-    <result column="gp_DATE_MODIFIED" property="dateModified" jdbcType="DATE" />
+    <result column="gp_DATE_CREATED" property="dateCreated" jdbcType="TIMESTAMP" />
+    <result column="gp_DATE_MODIFIED" property="dateModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -147,7 +147,7 @@
       LAST_ID, DATE_CREATED, DATE_MODIFIED
       )
     values (#{vendorLocationId,jdbcType=BIGINT}, #{gasGradeId,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, 
-      #{lastId,jdbcType=BIGINT}, #{dateCreated,jdbcType=DATE}, #{dateModified,jdbcType=DATE}
+      #{lastId,jdbcType=BIGINT}, #{dateCreated,jdbcType=TIMESTAMP}, #{dateModified,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gasguz.model.mybatis.GasPrice" >
@@ -193,10 +193,10 @@
         #{lastId,jdbcType=BIGINT},
       </if>
       <if test="dateCreated != null" >
-        #{dateCreated,jdbcType=DATE},
+        #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        #{dateModified,jdbcType=DATE},
+        #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -233,10 +233,10 @@
         gp.LAST_ID = #{record.lastId,jdbcType=BIGINT},
       </if>
       <if test="record.dateCreated != null" >
-        gp.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
+        gp.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.dateModified != null" >
-        gp.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE},
+        gp.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -254,8 +254,8 @@
       gp.GAS_GRADE_ID = #{record.gasGradeId,jdbcType=BIGINT},
       gp.PRICE = #{record.price,jdbcType=DECIMAL},
       gp.LAST_ID = #{record.lastId,jdbcType=BIGINT},
-      gp.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
-      gp.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE}
+      gp.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
+      gp.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -280,10 +280,10 @@
         LAST_ID = #{lastId,jdbcType=BIGINT},
       </if>
       <if test="dateCreated != null" >
-        DATE_CREATED = #{dateCreated,jdbcType=DATE},
+        DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        DATE_MODIFIED = #{dateModified,jdbcType=DATE},
+        DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     where ID = #{id,jdbcType=BIGINT}
@@ -298,8 +298,8 @@
       GAS_GRADE_ID = #{gasGradeId,jdbcType=BIGINT},
       PRICE = #{price,jdbcType=DECIMAL},
       LAST_ID = #{lastId,jdbcType=BIGINT},
-      DATE_CREATED = #{dateCreated,jdbcType=DATE},
-      DATE_MODIFIED = #{dateModified,jdbcType=DATE}
+      DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+      DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

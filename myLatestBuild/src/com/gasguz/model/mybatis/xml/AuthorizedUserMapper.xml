@@ -11,8 +11,8 @@
     <result column="au_FNAME" property="fname" jdbcType="VARCHAR" />
     <result column="au_LNAME" property="lname" jdbcType="VARCHAR" />
     <result column="au_PIN" property="pin" jdbcType="VARCHAR" />
-    <result column="au_DATE_CREATED" property="dateCreated" jdbcType="DATE" />
-    <result column="au_DATE_MODIFIED" property="dateModified" jdbcType="DATE" />
+    <result column="au_DATE_CREATED" property="dateCreated" jdbcType="TIMESTAMP" />
+    <result column="au_DATE_MODIFIED" property="dateModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -146,7 +146,7 @@
       PIN, DATE_CREATED, DATE_MODIFIED
       )
     values (#{userId,jdbcType=BIGINT}, #{fname,jdbcType=VARCHAR}, #{lname,jdbcType=VARCHAR}, 
-      #{pin,jdbcType=VARCHAR}, #{dateCreated,jdbcType=DATE}, #{dateModified,jdbcType=DATE}
+      #{pin,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{dateModified,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gasguz.model.mybatis.AuthorizedUser" >
@@ -192,10 +192,10 @@
         #{pin,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        #{dateCreated,jdbcType=DATE},
+        #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        #{dateModified,jdbcType=DATE},
+        #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -232,10 +232,10 @@
         au.PIN = #{record.pin,jdbcType=VARCHAR},
       </if>
       <if test="record.dateCreated != null" >
-        au.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
+        au.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.dateModified != null" >
-        au.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE},
+        au.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -253,8 +253,8 @@
       au.FNAME = #{record.fname,jdbcType=VARCHAR},
       au.LNAME = #{record.lname,jdbcType=VARCHAR},
       au.PIN = #{record.pin,jdbcType=VARCHAR},
-      au.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
-      au.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE}
+      au.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
+      au.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -279,10 +279,10 @@
         PIN = #{pin,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        DATE_CREATED = #{dateCreated,jdbcType=DATE},
+        DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        DATE_MODIFIED = #{dateModified,jdbcType=DATE},
+        DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     where ID = #{id,jdbcType=BIGINT}
@@ -297,8 +297,8 @@
       FNAME = #{fname,jdbcType=VARCHAR},
       LNAME = #{lname,jdbcType=VARCHAR},
       PIN = #{pin,jdbcType=VARCHAR},
-      DATE_CREATED = #{dateCreated,jdbcType=DATE},
-      DATE_MODIFIED = #{dateModified,jdbcType=DATE}
+      DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+      DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

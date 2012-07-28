@@ -2,7 +2,6 @@ package com.gasguz.model.mybatis;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class UserRoleExample {
@@ -194,32 +193,6 @@ public class UserRoleExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -483,52 +456,52 @@ public class UserRoleExample {
         }
 
         public Criteria andDateCreatedEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_CREATED =", value, "dateCreated");
+            addCriterion("ur.DATE_CREATED =", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedNotEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_CREATED <>", value, "dateCreated");
+            addCriterion("ur.DATE_CREATED <>", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedGreaterThan(Date value) {
-            addCriterionForJDBCDate("ur.DATE_CREATED >", value, "dateCreated");
+            addCriterion("ur.DATE_CREATED >", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_CREATED >=", value, "dateCreated");
+            addCriterion("ur.DATE_CREATED >=", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedLessThan(Date value) {
-            addCriterionForJDBCDate("ur.DATE_CREATED <", value, "dateCreated");
+            addCriterion("ur.DATE_CREATED <", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_CREATED <=", value, "dateCreated");
+            addCriterion("ur.DATE_CREATED <=", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedIn(List<Date> values) {
-            addCriterionForJDBCDate("ur.DATE_CREATED in", values, "dateCreated");
+            addCriterion("ur.DATE_CREATED in", values, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedNotIn(List<Date> values) {
-            addCriterionForJDBCDate("ur.DATE_CREATED not in", values, "dateCreated");
+            addCriterion("ur.DATE_CREATED not in", values, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ur.DATE_CREATED between", value1, value2, "dateCreated");
+            addCriterion("ur.DATE_CREATED between", value1, value2, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ur.DATE_CREATED not between", value1, value2, "dateCreated");
+            addCriterion("ur.DATE_CREATED not between", value1, value2, "dateCreated");
             return (Criteria) this;
         }
 
@@ -543,52 +516,52 @@ public class UserRoleExample {
         }
 
         public Criteria andDateModifiedEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED =", value, "dateModified");
+            addCriterion("ur.DATE_MODIFIED =", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedNotEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED <>", value, "dateModified");
+            addCriterion("ur.DATE_MODIFIED <>", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedGreaterThan(Date value) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED >", value, "dateModified");
+            addCriterion("ur.DATE_MODIFIED >", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED >=", value, "dateModified");
+            addCriterion("ur.DATE_MODIFIED >=", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedLessThan(Date value) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED <", value, "dateModified");
+            addCriterion("ur.DATE_MODIFIED <", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED <=", value, "dateModified");
+            addCriterion("ur.DATE_MODIFIED <=", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedIn(List<Date> values) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED in", values, "dateModified");
+            addCriterion("ur.DATE_MODIFIED in", values, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedNotIn(List<Date> values) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED not in", values, "dateModified");
+            addCriterion("ur.DATE_MODIFIED not in", values, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED between", value1, value2, "dateModified");
+            addCriterion("ur.DATE_MODIFIED between", value1, value2, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ur.DATE_MODIFIED not between", value1, value2, "dateModified");
+            addCriterion("ur.DATE_MODIFIED not between", value1, value2, "dateModified");
             return (Criteria) this;
         }
     }

@@ -9,8 +9,8 @@
     <id column="gg_ID" property="id" jdbcType="BIGINT" />
     <result column="gg_NAME" property="name" jdbcType="VARCHAR" />
     <result column="gg_OCTANE" property="octane" jdbcType="VARCHAR" />
-    <result column="gg_DATE_CREATED" property="dateCreated" jdbcType="DATE" />
-    <result column="gg_DATE_MODIFIED" property="dateModified" jdbcType="DATE" />
+    <result column="gg_DATE_CREATED" property="dateCreated" jdbcType="TIMESTAMP" />
+    <result column="gg_DATE_MODIFIED" property="dateModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -142,8 +142,8 @@
     </selectKey>
     insert into GG_GAS_GRADE (NAME, OCTANE, DATE_CREATED, 
       DATE_MODIFIED)
-    values (#{name,jdbcType=VARCHAR}, #{octane,jdbcType=VARCHAR}, #{dateCreated,jdbcType=DATE}, 
-      #{dateModified,jdbcType=DATE})
+    values (#{name,jdbcType=VARCHAR}, #{octane,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, 
+      #{dateModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.gasguz.model.mybatis.GasGrade" >
     <!--
@@ -176,10 +176,10 @@
         #{octane,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        #{dateCreated,jdbcType=DATE},
+        #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        #{dateModified,jdbcType=DATE},
+        #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -210,10 +210,10 @@
         gg.OCTANE = #{record.octane,jdbcType=VARCHAR},
       </if>
       <if test="record.dateCreated != null" >
-        gg.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
+        gg.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.dateModified != null" >
-        gg.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE},
+        gg.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -229,8 +229,8 @@
     set gg.ID = #{record.id,jdbcType=BIGINT},
       gg.NAME = #{record.name,jdbcType=VARCHAR},
       gg.OCTANE = #{record.octane,jdbcType=VARCHAR},
-      gg.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
-      gg.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE}
+      gg.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
+      gg.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -249,10 +249,10 @@
         OCTANE = #{octane,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        DATE_CREATED = #{dateCreated,jdbcType=DATE},
+        DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        DATE_MODIFIED = #{dateModified,jdbcType=DATE},
+        DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     where ID = #{id,jdbcType=BIGINT}
@@ -265,8 +265,8 @@
     update GG_GAS_GRADE
     set NAME = #{name,jdbcType=VARCHAR},
       OCTANE = #{octane,jdbcType=VARCHAR},
-      DATE_CREATED = #{dateCreated,jdbcType=DATE},
-      DATE_MODIFIED = #{dateModified,jdbcType=DATE}
+      DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+      DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

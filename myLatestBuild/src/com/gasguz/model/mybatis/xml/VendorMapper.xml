@@ -11,8 +11,8 @@
     <result column="v_EMAIL" property="email" jdbcType="VARCHAR" />
     <result column="v_PHONE" property="phone" jdbcType="VARCHAR" />
     <result column="v_STATUS" property="status" jdbcType="VARCHAR" />
-    <result column="v_DATE_CREATED" property="dateCreated" jdbcType="DATE" />
-    <result column="v_DATE_MODIFIED" property="dateModified" jdbcType="DATE" />
+    <result column="v_DATE_CREATED" property="dateCreated" jdbcType="TIMESTAMP" />
+    <result column="v_DATE_MODIFIED" property="dateModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -146,7 +146,7 @@
       STATUS, DATE_CREATED, DATE_MODIFIED
       )
     values (#{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{dateCreated,jdbcType=DATE}, #{dateModified,jdbcType=DATE}
+      #{status,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{dateModified,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gasguz.model.mybatis.Vendor" >
@@ -192,10 +192,10 @@
         #{status,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        #{dateCreated,jdbcType=DATE},
+        #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        #{dateModified,jdbcType=DATE},
+        #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -232,10 +232,10 @@
         v.STATUS = #{record.status,jdbcType=VARCHAR},
       </if>
       <if test="record.dateCreated != null" >
-        v.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
+        v.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.dateModified != null" >
-        v.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE},
+        v.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -253,8 +253,8 @@
       v.EMAIL = #{record.email,jdbcType=VARCHAR},
       v.PHONE = #{record.phone,jdbcType=VARCHAR},
       v.STATUS = #{record.status,jdbcType=VARCHAR},
-      v.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
-      v.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE}
+      v.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
+      v.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -279,10 +279,10 @@
         STATUS = #{status,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        DATE_CREATED = #{dateCreated,jdbcType=DATE},
+        DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        DATE_MODIFIED = #{dateModified,jdbcType=DATE},
+        DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     where ID = #{id,jdbcType=BIGINT}
@@ -297,8 +297,8 @@
       EMAIL = #{email,jdbcType=VARCHAR},
       PHONE = #{phone,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=VARCHAR},
-      DATE_CREATED = #{dateCreated,jdbcType=DATE},
-      DATE_MODIFIED = #{dateModified,jdbcType=DATE}
+      DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+      DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

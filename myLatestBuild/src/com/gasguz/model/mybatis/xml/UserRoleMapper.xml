@@ -10,8 +10,8 @@
     <result column="ur_USER_ID" property="userId" jdbcType="BIGINT" />
     <result column="ur_ROLE_ID" property="roleId" jdbcType="BIGINT" />
     <result column="ur_STATUS" property="status" jdbcType="VARCHAR" />
-    <result column="ur_DATE_CREATED" property="dateCreated" jdbcType="DATE" />
-    <result column="ur_DATE_MODIFIED" property="dateModified" jdbcType="DATE" />
+    <result column="ur_DATE_CREATED" property="dateCreated" jdbcType="TIMESTAMP" />
+    <result column="ur_DATE_MODIFIED" property="dateModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -144,7 +144,7 @@
     insert into GG_USER_ROLE (USER_ID, ROLE_ID, STATUS, 
       DATE_CREATED, DATE_MODIFIED)
     values (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR}, 
-      #{dateCreated,jdbcType=DATE}, #{dateModified,jdbcType=DATE})
+      #{dateCreated,jdbcType=TIMESTAMP}, #{dateModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.gasguz.model.mybatis.UserRole" >
     <!--
@@ -183,10 +183,10 @@
         #{status,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        #{dateCreated,jdbcType=DATE},
+        #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        #{dateModified,jdbcType=DATE},
+        #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -220,10 +220,10 @@
         ur.STATUS = #{record.status,jdbcType=VARCHAR},
       </if>
       <if test="record.dateCreated != null" >
-        ur.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
+        ur.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.dateModified != null" >
-        ur.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE},
+        ur.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -240,8 +240,8 @@
       ur.USER_ID = #{record.userId,jdbcType=BIGINT},
       ur.ROLE_ID = #{record.roleId,jdbcType=BIGINT},
       ur.STATUS = #{record.status,jdbcType=VARCHAR},
-      ur.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
-      ur.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE}
+      ur.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
+      ur.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -263,10 +263,10 @@
         STATUS = #{status,jdbcType=VARCHAR},
       </if>
       <if test="dateCreated != null" >
-        DATE_CREATED = #{dateCreated,jdbcType=DATE},
+        DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        DATE_MODIFIED = #{dateModified,jdbcType=DATE},
+        DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     where ID = #{id,jdbcType=BIGINT}
@@ -280,8 +280,8 @@
     set USER_ID = #{userId,jdbcType=BIGINT},
       ROLE_ID = #{roleId,jdbcType=BIGINT},
       STATUS = #{status,jdbcType=VARCHAR},
-      DATE_CREATED = #{dateCreated,jdbcType=DATE},
-      DATE_MODIFIED = #{dateModified,jdbcType=DATE}
+      DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+      DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

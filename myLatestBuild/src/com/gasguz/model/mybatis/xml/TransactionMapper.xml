@@ -13,8 +13,9 @@
     <result column="t_COST" property="cost" jdbcType="DECIMAL" />
     <result column="t_AMOUNT" property="amount" jdbcType="DECIMAL" />
     <result column="t_TRANSACTION_TYPE" property="transactionType" jdbcType="VARCHAR" />
-    <result column="t_DATE_CREATED" property="dateCreated" jdbcType="DATE" />
-    <result column="t_DATE_MODIFIED" property="dateModified" jdbcType="DATE" />
+    <result column="t_TRANSACTION_DATE" property="transactionDate" jdbcType="TIMESTAMP" />
+    <result column="t_DATE_CREATED" property="dateCreated" jdbcType="TIMESTAMP" />
+    <result column="t_DATE_MODIFIED" property="dateModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -89,7 +90,7 @@
     -->
     t.ID as t_ID, t.USER_ID as t_USER_ID, t.VENDOR_LOCATION_ID as t_VENDOR_LOCATION_ID, 
     t.GAS_GRADE_ID as t_GAS_GRADE_ID, t.COST as t_COST, t.AMOUNT as t_AMOUNT, t.TRANSACTION_TYPE as t_TRANSACTION_TYPE, 
-    t.DATE_CREATED as t_DATE_CREATED, t.DATE_MODIFIED as t_DATE_MODIFIED
+    t.TRANSACTION_DATE as t_TRANSACTION_DATE, t.DATE_CREATED as t_DATE_CREATED, t.DATE_MODIFIED as t_DATE_MODIFIED
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gasguz.model.mybatis.TransactionExample" >
     <!--
@@ -147,10 +148,12 @@
     </selectKey>
     insert into GG_TRANSACTION (USER_ID, VENDOR_LOCATION_ID, GAS_GRADE_ID, 
       COST, AMOUNT, TRANSACTION_TYPE, 
-      DATE_CREATED, DATE_MODIFIED)
+      TRANSACTION_DATE, DATE_CREATED, DATE_MODIFIED
+      )
     values (#{userId,jdbcType=BIGINT}, #{vendorLocationId,jdbcType=BIGINT}, #{gasGradeId,jdbcType=BIGINT}, 
       #{cost,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}, #{transactionType,jdbcType=VARCHAR}, 
-      #{dateCreated,jdbcType=DATE}, #{dateModified,jdbcType=DATE})
+      #{transactionDate,jdbcType=TIMESTAMP}, #{dateCreated,jdbcType=TIMESTAMP}, #{dateModified,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.gasguz.model.mybatis.Transaction" >
     <!--
@@ -180,6 +183,9 @@
       <if test="transactionType != null" >
         TRANSACTION_TYPE,
       </if>
+      <if test="transactionDate != null" >
+        TRANSACTION_DATE,
+      </if>
       <if test="dateCreated != null" >
         DATE_CREATED,
       </if>
@@ -206,11 +212,14 @@
       <if test="transactionType != null" >
         #{transactionType,jdbcType=VARCHAR},
       </if>
+      <if test="transactionDate != null" >
+        #{transactionDate,jdbcType=TIMESTAMP},
+      </if>
       <if test="dateCreated != null" >
-        #{dateCreated,jdbcType=DATE},
+        #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        #{dateModified,jdbcType=DATE},
+        #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -252,11 +261,14 @@
       <if test="record.transactionType != null" >
         t.TRANSACTION_TYPE = #{record.transactionType,jdbcType=VARCHAR},
       </if>
+      <if test="record.transactionDate != null" >
+        t.TRANSACTION_DATE = #{record.transactionDate,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.dateCreated != null" >
-        t.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
+        t.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="record.dateModified != null" >
-        t.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE},
+        t.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -276,8 +288,9 @@
       t.COST = #{record.cost,jdbcType=DECIMAL},
       t.AMOUNT = #{record.amount,jdbcType=DECIMAL},
       t.TRANSACTION_TYPE = #{record.transactionType,jdbcType=VARCHAR},
-      t.DATE_CREATED = #{record.dateCreated,jdbcType=DATE},
-      t.DATE_MODIFIED = #{record.dateModified,jdbcType=DATE}
+      t.TRANSACTION_DATE = #{record.transactionDate,jdbcType=TIMESTAMP},
+      t.DATE_CREATED = #{record.dateCreated,jdbcType=TIMESTAMP},
+      t.DATE_MODIFIED = #{record.dateModified,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -307,11 +320,14 @@
       <if test="transactionType != null" >
         TRANSACTION_TYPE = #{transactionType,jdbcType=VARCHAR},
       </if>
+      <if test="transactionDate != null" >
+        TRANSACTION_DATE = #{transactionDate,jdbcType=TIMESTAMP},
+      </if>
       <if test="dateCreated != null" >
-        DATE_CREATED = #{dateCreated,jdbcType=DATE},
+        DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateModified != null" >
-        DATE_MODIFIED = #{dateModified,jdbcType=DATE},
+        DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP},
       </if>
     </set>
     where ID = #{id,jdbcType=BIGINT}
@@ -328,8 +344,9 @@
       COST = #{cost,jdbcType=DECIMAL},
       AMOUNT = #{amount,jdbcType=DECIMAL},
       TRANSACTION_TYPE = #{transactionType,jdbcType=VARCHAR},
-      DATE_CREATED = #{dateCreated,jdbcType=DATE},
-      DATE_MODIFIED = #{dateModified,jdbcType=DATE}
+      TRANSACTION_DATE = #{transactionDate,jdbcType=TIMESTAMP},
+      DATE_CREATED = #{dateCreated,jdbcType=TIMESTAMP},
+      DATE_MODIFIED = #{dateModified,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

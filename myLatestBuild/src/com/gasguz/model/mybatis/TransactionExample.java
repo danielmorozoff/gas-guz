@@ -3,7 +3,6 @@ package com.gasguz.model.mybatis;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class TransactionExample {
@@ -195,32 +194,6 @@ public class TransactionExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -653,6 +626,66 @@ public class TransactionExample {
             return (Criteria) this;
         }
 
+        public Criteria andTransactionDateIsNull() {
+            addCriterion("t.TRANSACTION_DATE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateIsNotNull() {
+            addCriterion("t.TRANSACTION_DATE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateEqualTo(Date value) {
+            addCriterion("t.TRANSACTION_DATE =", value, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateNotEqualTo(Date value) {
+            addCriterion("t.TRANSACTION_DATE <>", value, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateGreaterThan(Date value) {
+            addCriterion("t.TRANSACTION_DATE >", value, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("t.TRANSACTION_DATE >=", value, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateLessThan(Date value) {
+            addCriterion("t.TRANSACTION_DATE <", value, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateLessThanOrEqualTo(Date value) {
+            addCriterion("t.TRANSACTION_DATE <=", value, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateIn(List<Date> values) {
+            addCriterion("t.TRANSACTION_DATE in", values, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateNotIn(List<Date> values) {
+            addCriterion("t.TRANSACTION_DATE not in", values, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateBetween(Date value1, Date value2) {
+            addCriterion("t.TRANSACTION_DATE between", value1, value2, "transactionDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransactionDateNotBetween(Date value1, Date value2) {
+            addCriterion("t.TRANSACTION_DATE not between", value1, value2, "transactionDate");
+            return (Criteria) this;
+        }
+
         public Criteria andDateCreatedIsNull() {
             addCriterion("t.DATE_CREATED is null");
             return (Criteria) this;
@@ -664,52 +697,52 @@ public class TransactionExample {
         }
 
         public Criteria andDateCreatedEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_CREATED =", value, "dateCreated");
+            addCriterion("t.DATE_CREATED =", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedNotEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_CREATED <>", value, "dateCreated");
+            addCriterion("t.DATE_CREATED <>", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedGreaterThan(Date value) {
-            addCriterionForJDBCDate("t.DATE_CREATED >", value, "dateCreated");
+            addCriterion("t.DATE_CREATED >", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_CREATED >=", value, "dateCreated");
+            addCriterion("t.DATE_CREATED >=", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedLessThan(Date value) {
-            addCriterionForJDBCDate("t.DATE_CREATED <", value, "dateCreated");
+            addCriterion("t.DATE_CREATED <", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_CREATED <=", value, "dateCreated");
+            addCriterion("t.DATE_CREATED <=", value, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedIn(List<Date> values) {
-            addCriterionForJDBCDate("t.DATE_CREATED in", values, "dateCreated");
+            addCriterion("t.DATE_CREATED in", values, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedNotIn(List<Date> values) {
-            addCriterionForJDBCDate("t.DATE_CREATED not in", values, "dateCreated");
+            addCriterion("t.DATE_CREATED not in", values, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("t.DATE_CREATED between", value1, value2, "dateCreated");
+            addCriterion("t.DATE_CREATED between", value1, value2, "dateCreated");
             return (Criteria) this;
         }
 
         public Criteria andDateCreatedNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("t.DATE_CREATED not between", value1, value2, "dateCreated");
+            addCriterion("t.DATE_CREATED not between", value1, value2, "dateCreated");
             return (Criteria) this;
         }
 
@@ -724,52 +757,52 @@ public class TransactionExample {
         }
 
         public Criteria andDateModifiedEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED =", value, "dateModified");
+            addCriterion("t.DATE_MODIFIED =", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedNotEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED <>", value, "dateModified");
+            addCriterion("t.DATE_MODIFIED <>", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedGreaterThan(Date value) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED >", value, "dateModified");
+            addCriterion("t.DATE_MODIFIED >", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED >=", value, "dateModified");
+            addCriterion("t.DATE_MODIFIED >=", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedLessThan(Date value) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED <", value, "dateModified");
+            addCriterion("t.DATE_MODIFIED <", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED <=", value, "dateModified");
+            addCriterion("t.DATE_MODIFIED <=", value, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedIn(List<Date> values) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED in", values, "dateModified");
+            addCriterion("t.DATE_MODIFIED in", values, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedNotIn(List<Date> values) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED not in", values, "dateModified");
+            addCriterion("t.DATE_MODIFIED not in", values, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED between", value1, value2, "dateModified");
+            addCriterion("t.DATE_MODIFIED between", value1, value2, "dateModified");
             return (Criteria) this;
         }
 
         public Criteria andDateModifiedNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("t.DATE_MODIFIED not between", value1, value2, "dateModified");
+            addCriterion("t.DATE_MODIFIED not between", value1, value2, "dateModified");
             return (Criteria) this;
         }
     }
