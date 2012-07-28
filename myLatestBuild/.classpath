@@ -53,10 +53,10 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/xalan.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/xml-apis.jar"/>
-	<classpathentry kind="lib" path="ant/dbunit-2.4.7.jar"/>
 	<classpathentry kind="lib" path="ant/hibernate-tools.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/mybatis-3.1.1.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/mysql-connector-java-5.1.20-bin.jar"/>
 	<classpathentry kind="lib" path="/opt/apps/apache-tomcat-7.0.27/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="ant/dbunit-2.4.8.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
