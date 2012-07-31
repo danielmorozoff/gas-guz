@@ -1,3 +1,5 @@
+<%@ taglib prefix="c"     uri="http://java.sun.com/jsp/jstl/core" %>
+
 <style>
 .singInp{
 	margin-bottom:2.7% !important;
@@ -143,7 +145,7 @@ $(document).ready(function(){
 						eval("submissionObj."+$(this).attr('name')+"='"+$(this).val()+"'");
 					});
 			
-			$.post('customer/signup.html?method=signup',
+			$.post('<c:url value="/customer/signup.html?method=signup"/>',
 			    {"fname":$("#fname").val(), "lname":$("#lname").val(), "email":$("#email").val(), "username":$("#username").val(), "password":$("#password").val()},
 			    function(resp){
 				if(resp.indexOf('userCreated_')>-1){

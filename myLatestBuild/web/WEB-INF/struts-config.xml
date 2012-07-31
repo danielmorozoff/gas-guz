@@ -14,7 +14,7 @@
       <form-property name="password" type="java.lang.String" />
     </form-bean>
 
-    <form-bean name="accountForm" type="com.gasguz.model.mybatis.Account"/>
+    <form-bean name="userForm" type="com.gasguz.model.mybatis.User"/>
   </form-beans>
 
   <!-- ========== Global Exceptions ============================== -->
@@ -49,7 +49,7 @@
     <!-- ********************************************************************************************************************** -->
     <action path="/" forward=".customer.default"/>
 	
-    <action path="/customer/signup" type="com.gasguz.action.customer.CustomerAjaxAction" name="accountForm" validate="false" scope="request" parameter="method"/>
+    <action path="/customer/signup" type="com.gasguz.action.customer.CustomerAjaxAction" name="userForm" validate="false" scope="request" parameter="method"/>
   
   
     <!-- ********************************************************************************************************************** -->
