@@ -1,0 +1,52 @@
+<style>
+	.stationClass{
+		background:#fff;
+		margin:1.5%;
+		padding:1%;
+		width:95%;
+		height:26%;
+		min-height: 120px;
+		border-radius:5px;
+		color:rgb(153,153,153);
+		font-size:8pt;
+		line-height:100%;
+		cursor: pointer;
+
+	}
+	.stationTitle{
+		color:#333;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		$('.stationClass').hover(
+			function(){
+				$(this)
+				.css('borderColor','#fff')
+				.css('boxShadow',"0px 0px 5px #888")
+				.children('.stationTitle').css('color','#7acd28');
+
+			},
+			function(){
+				$(this)
+				.css('borderColor','#333')
+				.css('boxShadow',"0px 0px 0px #888")
+				.children('.stationTitle').css('color','#333');
+			}
+		)
+	})
+</script>
+	<div id="stationsDiv" style='position:relative;width:40%;min-width:460px;margin-left:5%;float:left;'>
+		<h2 style='color:#7acd28'>Stations<h2>
+		<div id='stationContainer' style='background:#eee;border-radius:5px;border:2px solid #333;height:88%;padding:1%;width:100%;overflow-y:scroll'>
+			<div class="stationClass">
+				<h6 class='stationTitle'>Station 1</h6>
+				<p>
+					Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+				</p>
+				<p>
+					Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada magna mollis euismod.
+				</p>
+			</div>
+		</div>	
+	</div>

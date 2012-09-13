@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       GeneralController.welcomePage
+POST /saveEmail									GeneralController.saveEmail
+
+#Dashboard
+GET /page1							Application.dashboardPg1
+
+
+POST /reloadDashboardPage			AjaxPageLoad.loadSpecificPage
+
+GET /Dashboard/getPage 		Application.getPage
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+GET 	/.*										GeneralController.welcomePage
+
+
