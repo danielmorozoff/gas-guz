@@ -3,22 +3,26 @@
 # ~~~~
 
 # Home page
-GET     /                                       GeneralController.welcomePage
+GET     /                                       SignInController.loginToSite
+GET 	/welcomePage							GeneralController.welcomePage
 POST /saveEmail									GeneralController.saveEmail
 
+POST /signupUser								SignInController.signUpUser
+POST /loginUser									SignInController.loginToSite
+POST /logout									SignInController.logoutAndClearCache
+
 #Dashboard
-GET /page1							Application.dashboardPg1
+GET /page1										GeneralController.dashboardPg1
 
 
 POST /reloadDashboardPage			AjaxPageLoad.loadSpecificPage
 
-GET /Dashboard/getPage 		Application.getPage
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
-GET 	/.*										GeneralController.welcomePage
+GET 	/.*										GeneralController.loginToSite
 
 

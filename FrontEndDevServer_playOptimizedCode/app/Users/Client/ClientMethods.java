@@ -76,7 +76,7 @@ public class ClientMethods {
 					purchasedRel.setProperty("amountOfDollars", amountOfDollars);
 					//convert dollars to gallons
 					StationMethods sMeths = new StationMethods();
-					Station station = (Station)new GenericUserMethods().convertUserNodeToUserObject(stationNode, null);
+					Station station = (Station)new GenericUserMethods().convertUserNodeToUserObject(stationNode, new Station(), null);
 					float numberOfGallons = sMeths.convertDollarsIntoGallons(amountOfDollars,grade,
 							station);
 					purchasedRel.setProperty("amountOfGallons",numberOfGallons);

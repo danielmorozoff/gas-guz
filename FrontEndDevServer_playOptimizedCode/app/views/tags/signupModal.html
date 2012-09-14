@@ -143,7 +143,7 @@ $(document).ready(function(){
 						eval("submissionObj."+$(this).attr('name')+"='"+$(this).val()+"'");
 					});
 			
-			$.post('/signUp',{"userObj":JSON.stringify(submissionObj)},function(resp){
+			$.post('/signupUser',{"userObj":JSON.stringify(submissionObj)},function(resp){
 				if(resp.indexOf('userCreated_')>-1){
 					var userName = resp.substring(resp.indexOf('_')+1);
 					$('#loginDiv').empty();

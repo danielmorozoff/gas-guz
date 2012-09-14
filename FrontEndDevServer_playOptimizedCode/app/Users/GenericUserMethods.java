@@ -9,6 +9,9 @@ import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.Transaction;
 
+import play.cache.Cache;
+import play.mvc.Before;
+
 import Database.UserDatabase;
 import Users.Admin.Admin;
 import Users.Client.Client;
@@ -133,14 +136,29 @@ public class GenericUserMethods {
 	 * @param userNode
 	 * @return
 	 */
-	public Object convertUserNodeToUserObject(Node userNode,ArrayList <String> listOfExceptions){
-		Object uObj = new Object();
+	public Object convertUserNodeToUserObject(Node userNode,Object uObj, ArrayList <String> listOfExceptions){
+		
+		
 		Iterable <String> keys = userNode.getPropertyKeys();
 		for (String key:keys){
 			try{
-				if(!listOfExceptions.contains(key)){
+				if(listOfExceptions!=null){
+					if(!listOfExceptions.contains(key)){
+						Field field = uObj.getClass().getField(key);
+						try {
+						if(field.isAccessible())field.set(uObj, userNode.getProperty(key));
+						} catch (IllegalArgumentException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				else{
 					Field field = uObj.getClass().getField(key);
+					
 					try {
+						
 					if(field.isAccessible())field.set(uObj, userNode.getProperty(key));
 					} catch (IllegalArgumentException e) {
 						e.printStackTrace();

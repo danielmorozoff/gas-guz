@@ -1,17 +1,74 @@
 package pageLoaderPackage;
 
+import java.lang.reflect.Field;
+
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Transaction;
+import org.neo4j.graphdb.index.Index;
 import org.neo4j.graphdb.index.IndexHits;
 import org.neo4j.graphdb.index.IndexManager;
+
+import scala.actors.threadpool.Arrays;
+
+import Users.GenericUserMethods;
+import Users.User;
+
+
 
 import Database.UserDatabase;
 
 public class UserEntrance {
 
-	GraphDatabaseService userDB = UserDatabase.uDB; ;
+	GraphDatabaseService userDB = UserDatabase.uDB; 
 	public String errorString;
+	public User loggedInUser = null;
 	
+	
+	public boolean makeNewUser(User userClass){
+			
+			 IndexManager userIndex = userDB.index();
+			 
+		boolean userSaved = false;
+		//If traffic gets bigger will need to do batchInserter methods instead of transactions
+		try{
+		Transaction transaction = userDB.beginTx();
+		
+		Node userNode = userDB.createNode();
+		//add to index
+		Index<Node> userNameIndex = userIndex.forNodes( "users" ); 	
+			System.out.println("***Loading User params.***");
+		Field[] userFields = userClass.getClass().getDeclaredFields();
+			for(int i=0; i<userFields.length;i++){
+				if(!userFields[i].getName().equals("userDB")){
+				System.out.println("Name: "+userFields[i].getName()+" ClassObject:  "+userFields[i].get(userClass) );
+				if(userFields[i].get(userClass)!=null){
+					userNode.setProperty(userFields[i].getName(), userFields[i].get(userClass));
+				}
+				else{
+					userNode.setProperty(userFields[i].getName(), "");
+				}
+				}
+			}
+			//This overrides the default prop of 0
+			
+			System.out.println("Adding "+userClass.userName+" to index via "+ userNode);
+		
+			userNameIndex.add(userNode, "userName", userClass.userName);
+			userNameIndex.add(userNode, "email", userClass.email);
+			
+			transaction.success();
+			transaction.finish();
+		
+			System.out.println("User creation transaction complete");
+			userSaved = true;
+		}
+		catch(Exception e){
+			System.out.println("****Exception in Creating New User after encryption of password******");
+			e.printStackTrace();
+		}
+		return userSaved;
+	}
 	/**
 	 * Test a users credentials and log him in
 	 * @param userName
@@ -20,9 +77,9 @@ public class UserEntrance {
 	 * @return
 	 */
 	 public boolean testLoginInfo(String userName, String password,String type){
-		
+	//	System.out.println("Logging "+userName+" into site");
 		boolean enter = false;
-		if (userName !=null || password!=null ){
+		if (userName !=null && password!=null && userDB.index().existsForNodes("users") ){
 		 IndexManager userIndex = userDB.index();
 		 
 		 String encryptedInputPass="";
@@ -31,6 +88,7 @@ public class UserEntrance {
 					hits = userIndex.forNodes("users").get("userName", userName);
 				}
 				else if(type.equals("email")){
+					
 					System.out.println("getting email");
 					System.out.println(userIndex.forNodes("users").get("email", userName).getSingle());
 					hits = userIndex.forNodes("users").get("email", userName);
@@ -40,16 +98,17 @@ public class UserEntrance {
 					if(curNode.getProperty("userName").equals(userName) && type.equals("userName")){
 								
 										try {
-											encryptedInputPass = encryptPassword(password,"userValidation",curNode);
+											encryptedInputPass = encryptPassword(password,"userValidation",curNode,null);
 										} catch (Exception e) {
 											System.out.println("*****Password Encryption Error in !!!testLoginInfo!!!****");
 											errorString = "User / password combination not found.";
 											e.printStackTrace();
 										}
-										String hashedDbPass =(String) curNode.getProperty("hashedPassword");
+										String hashedDbPass =(String) curNode.getProperty("password");
 										
 										if(hashedDbPass.equals(encryptedInputPass)){
 											enter = true;
+											loggedInUser =(User) new GenericUserMethods().convertUserNodeToUserObject(curNode,new User(), null);
 										}
 										else{
 											enter=false;
@@ -57,7 +116,11 @@ public class UserEntrance {
 										}
 					}
 				}
+				else{
+					errorString="User not found.";
+				}
 		}
+		errorString="Server Error.";
 		return enter;
 	 }
 	public String checkIfUserExistsInDb(String userName, String password, String email){
@@ -84,14 +147,14 @@ public class UserEntrance {
 		 
 	 }
 
-	private String encryptPassword(String password,String operation,Node potentialNode) throws Exception{
+	public String encryptPassword(String password,String operation,Node potentialNode, String pSalt) throws Exception{
 		 
-		 String hash = byteArrayToHexString(computeHash(password,operation,potentialNode));
+		 String hash = byteArrayToHexString(computeHash(password,operation,potentialNode, pSalt));
 	  //   System.out.println("the computed hash (hex string) : " + hash); 
 	     return hash;
 	 }
 	 
-	 private  byte[] computeHash(String x,String operation, Node potentialNode)   
+	 private  byte[] computeHash(String x,String operation, Node potentialNode, String pSalt)   
 			  throws Exception  
 			  {
 			     java.security.MessageDigest d =null;
@@ -101,11 +164,11 @@ public class UserEntrance {
 			     String presalt = "&salting<98Yu!F>3;uc1k(_*!!" ;
 		//	     System.out.println("operation: "+operation);
 			     String postSalt ="";
-			     if(operation.equals("userCreation") && potentialNode == null){
-			     postSalt = Long.toString(System.currentTimeMillis());
-			    // System.out.println("generating salt: "+postSalt);
+			     if(operation.equals("userCreation") && potentialNode == null && pSalt!=null){
+			    	 //salt created in the loadUser method in User Class
+			    	 postSalt = pSalt;
 			     }
-			     if(operation.equals("userValidation") && potentialNode != null ){
+			     if(operation.equals("userValidation") && potentialNode != null && pSalt==null ){
 			    	postSalt = (String) potentialNode.getProperty("salty");
 			    //	System.out.println("retrieved postsalt: "+postSalt);
 			     }
