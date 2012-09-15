@@ -1,0 +1,127 @@
+<style>
+	.secTitle{
+		color:#7ACD28;
+	}
+	.userInfo{
+		margin-bottom:5%;
+		
+	}
+	.userInfo h6{
+		font-size:14pt;
+		color:#333;
+	}
+	.userInfo-val{
+		margin-bottom:5%;
+	}
+	.userInfo-val h6{
+		margin-top:1%;
+		font-size:14pt;
+		color:rgb(153,153,153);
+	}
+	.modLink{
+		
+		font-size:14pt;
+		margin-top:-4%;
+		margin-left:2%;
+		vertical-align:5%;
+		cursor: pointer;
+	}
+	.inputObj{
+		border-radius:5px;
+		background:#eee;
+		box-shadow:0px 0px 4px 4px #7ACD28;
+		margin-top:2%;
+		border:none;
+	}
+</style>
+<script>
+var storedObj,enterClicked;
+$(document).ready(function(){
+	$('.modLink').hover(function(){
+		$(this).css('color','#7ACD28');
+	},function(){
+		$(this).css('color','#333');
+	})
+	$('.modLink').click(function(){
+		var objToAppend =$(this);
+		if($('.inputObj').length>0){
+
+		var objToMod = objToAppend.parents('.userInfo').children('.userInfo-val');
+		var modId= objToMod.attr('id');
+			objToMod.fadeOut(300,function(){
+					 	objToMod.replaceWith('<input id="'+modId+'" class="inputObj"/>');
+					 	storedObj= objToMod;
+			 			 $('.inputObj').focus();
+			 			});
+		}
+		else{
+
+			var objToMod = $(this).parents('.userInfo').children('.userInfo-val');
+			var modId= objToMod.attr('id');
+				storedObj= objToMod;
+				objToMod.fadeOut(300,function(){
+					 $(this).replaceWith('<input id="'+modId+'" class="inputObj"/>');
+					 $('.inputObj').focus();
+					
+				});
+
+		}
+	})
+
+	$('.inputObj').live("keypress",function(e){
+				if(e.keyCode ==13){
+					enterClicked = true;
+						var newVal = escape($(this).val());
+						var valType= $(this).parents('.userInfo').children('input').attr('id');
+						console.debug(newVal)
+				}
+		})		
+
+	$('.inputObj').live('blur',function(){
+			$(this).fadeOut(300,function(){
+					var par= $(this).parents('.userInfo');
+					$(this).remove();
+					storedObj.appendTo(par).fadeIn(300);
+			})
+		
+	})
+})
+</script>
+	<div id="personalInfoDiv" style='position:relative;float:left;width:40%;margin-left:2%;height:90%;border-radius:5px'>
+			<h2 class='secTitle'>Personal Information</h2>	
+			<div id='infoContainer' style='padding:4%;background:#eee;width:100%;height:70%;border-radius:5px;border:2px solid #000;'>
+				<div class='userInfo'>
+					<h6>First Name <span class='modLink'> &#8362;</span></h6> 
+					<div class='userInfo-val' id='fNameDiv'>
+						<h6>Daniel</h6>
+					</div>
+				</div>
+				<div class='userInfo'>
+					<h6>Last Name <span class='modLink'> &#8362;</span></h6> 
+					<div class='userInfo-val' id='lNameDiv'>
+						<h6>Morozoff</h6>
+					</div>
+				</div>
+				<div class='userInfo'>
+					<h6>Email <span class='modLink'> &#8362;</span></h6>
+					<div class='userInfo-val' id='emailDiv'>
+						<h6>danMoroz@gmail.com</h6>
+					</div>
+				</div>
+				<div class='userInfo' >
+					<h6>Address <span class='modLink'> &#8362;</span></h6>
+					<div class='userInfo-val' id='addressDiv'>
+						<h6>
+							123 Dog Dr.<br/>
+							San Francsico, CA 94127
+						</h6>
+					</div>
+				</div>
+				<div class='userInfo'>
+					<h6>Phone Number <span class='modLink'> &#8362;</span></h6>
+					<div class='userInfo-val' id='phoneNumberDiv'>
+						<h6>123-123-1111</h6>
+					</div>
+				</div>
+			</div>
+	</div>

@@ -1,0 +1,11 @@
+<div id="loginBox"  style="min-height:25%; max-height:25%; height:25%; background:#333; -moz-box-shadow: 10px 10px 5px #000; -webkit-box-shadow: 10px 10px 5px #000;box-shadow: 10px 10px 5px #000;">
+	<div id="signInDiv" style="position:relative; width:60%; margin-left:28%;padding-top:3%;z-index:2">
+		<form class="form-inline" action="/loginUser" method="POST" >
+		  <input name="userName" type="text" class="input" style="width:40%;height:25%; font-size:14pt;" placeholder="Username">
+		  <input name="password" type="password" class="input" style="margin-left:2%;width:40%;height:25%;font-size:14pt;" placeholder="Password">
+		  <button class="btn-large" style="background:#7ACD28;color:#FFF;margin-left:2%" onmouseover="this.style.opacity=.75" onmouseout="this.style.opacity=1">Sign-In</button>
+		</form>
+		<div style="position:relative;margin-top:-2%;margin-left:43%"><a href="#">Forgot Your Password?</a></div>
+	</div>
+	<div id="signupLogo" style="position:absolute;left:24%;top:5%; width:16%;height:10%;z-index:1;"><a href="#" onClick="showSignupModal()"><img  src="/public/images/signupLogo.png"/></a></div>
+</div>

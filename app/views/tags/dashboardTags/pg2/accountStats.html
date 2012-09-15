@@ -1,0 +1,61 @@
+<script type="text/javascript">
+var acntStatsChart;
+$(document).ready(function() {
+	
+	acntStatsChart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'accountStats',
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false
+		},
+		credits: {
+			enabled: false
+		},
+		title: {
+			text: 'Full Account Usage Breakdown',
+			style:{
+				color:'#333'
+			} 
+		},
+		tooltip: {
+			formatter: function() {
+				return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: false
+				},
+				showInLegend: true
+			}
+		},
+		colors:['#7ACD28','#333333','rgb(153,153,153)'],
+		series: [{
+			type: 'pie',
+			name: 'Usage of Account',
+			data: [
+				{
+					name: 'You',
+					y: 20,
+					sliced: true,
+					selected: true
+				},
+				['User2',    33],
+				['User3',     47]
+			]
+		}]
+	});
+});
+</script>	
+
+	<div id="acntStats" style="position:relative;margin-left:50%;margin-top:0%; width:50%; height:50%;">
+		<h2 class='secTitle'>Account  Stats</h2>
+
+		<div id='accountStats' style='background:#eee;border-radius:5px;width:96%;height:75%;padding:2%;border:2px solid #000;'>
+
+		</div>
+	</div>

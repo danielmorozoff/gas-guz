@@ -1,0 +1,79 @@
+<style>
+.list{
+		font-size:12pt;
+		margin-top:3%;
+		list-style:none;
+		background:#fff;
+		width:100%;
+		padding:3%;
+		padding-bottom:1%;
+		margin-left:-4%;
+		border-radius:5px;
+		position:relative;
+}
+.list > div >.listName{
+	max-width:60%;
+	word-wrap:break-word;
+}
+.list > div > .listName > h6{
+	font-size:12pt;
+	color:rgb(153,153,153);
+}
+
+.list > div > .listGallons{
+	max-width:30%;
+	margin-top:-8%;
+	margin-bottom:10%;
+	margin-left:65%;
+	background:#333;
+	padding:3%;
+	border-radius:5px;
+}
+.list > div > .listGallons > h6 {
+	font-size:15pt;
+	text-align:center;
+	word-wrap:break-word;
+	color:#7ACD28;
+} 
+</style>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+//Method for registering station selection
+$('#stationSelectionBox').change(function(){
+	alert('station changed');
+})
+
+
+
+
+
+})
+</script>
+<div id="totalGallonsDiv" style='position:relative;margin-left:65.5%;width:30%;height:100%;'>
+		<h2 class='secTitle'>Gallons Per User</h2>
+		<div id='userGallonsContainer' style='padding:4%;padding-bottom:10%;background:#eee;width:100%;height:81%;border-radius:5px;border:2px solid #000; overflow-y:none'>
+			<div >
+				<h6 style='color:#333;font-size:14pt'>Stations</h6>
+				<div style='margin-left:40%;margin-top:-6%'>
+					<select id="stationSelectionBox" style='font-size:14pt'>
+						<option>76 Valencia St.</option>
+						<option>Arco Mission St.</option>
+						<option>Olympian San Francisco</option>
+						<option>Shell 19th Ave</option>
+					</select>
+				</div>
+
+			</div>
+			<div style='background:#eee;width:80%;border-radius:5px;margin:0 auto ;margin-top:3%;max-height:90%;overflow-y:scroll'>
+				<ol style='padding:4%;'>
+					<li class='list'><div> <div class='listName'><h6>Dan Morozoff</h6></div> <div class='listGallons'><h6>523</h6></div> </div></li>
+					<li class='list'><div> <div class='listName'><h6>Dan Morozoff-Abezgauz</h6></div> <div class='listGallons'><h6>10</h6></div> </div></li>
+					<li class='list'><div> <div class='listName'><h6>Dan Morozoff-Abezgauz</h6></div> <div class='listGallons'><h6>1</h6></div> </div></li>
+					
+					
+				</ol>	
+			</div>
+		</div>
+</div>

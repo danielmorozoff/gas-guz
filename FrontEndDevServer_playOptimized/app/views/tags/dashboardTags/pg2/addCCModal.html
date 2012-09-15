@@ -1,0 +1,65 @@
+
+
+<div class="modal fade hide" id="addCCmodalDiv" >
+ 
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+      <p>Hi There!</p>
+	<p>We are excited that you want to try out GasGuz, save money and help the planet in the process! All you have to do is fill out some basic info about yourself and voila. You will then log in, fillout some payment information and it's your show!</p>
+	
+  <legend>Please share some information with us.</legend>
+	 <fieldset>
+	 	<div  style=" width:30%">
+			<label class="control-label" for="fName">	<b>First Name:</b>
+			</label>
+			<label class="control-label" for="lName">	<b>Last Name:</b>	
+			</label>
+			<label class="control-label" for="email">	<b>Credit Card Number</b>	
+			</label>	
+			<label class="control-label" for="userName">	<b>Exp. Date</b>	
+			</label>	
+			<label class="control-label" for="password">	<b>Security Key</b>	
+			</label>
+		</div>
+	  </fieldset>	
+	
+<div  style="margin-left:30%;margin-top:-22%">
+	<input type="text"  class='singInp' name='fName' id="fName" />
+	<input type="text"  class=' singInp' name='lName' id="lName" />  
+	<input type="text"  class=' singInp' name='email' id="email" />
+	<input type="text"  class=' singInp' name='userName' id="userName" />
+	<input  class=' singInp'  type="password" name='password' id="password"/>
+</div>
+
+  </div>
+  </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+	//Add cc to system
+	addCreditCard = function(){
+		alert('add CC');
+		/*
+		$.post('',{},function(){
+
+		})
+		*/
+	}
+$('#addCCBut').click(function(){
+	$('#addCCmodalDiv').modal('show');
+})
+		//Load Modal
+		$('#addCCmodalDiv').modal({
+			keyboard:true,
+			backdrop:true,
+			show:false
+			});
+
+
+})
+</script>
