@@ -1,0 +1,114 @@
+<style>
+.fPassInp{
+	margin-bottom:2.7% !important;
+	height:5% !important;
+}
+.control-label{
+	font-size:12pt;
+	margin-bottom:12% !important;
+}
+</style> 
+<div class="modal fade hide" id="fPassModal">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>Forgot Your Password?</h3>
+  </div>
+<div class="modal-body">
+    <p>Happens to us all the time!</p>
+	<p>Don't worry just provide us with your email address and your last name. And we'll shoot you a link to reset your password.</p>
+	
+  <legend>Please share some information with us.</legend>
+	 <fieldset>
+	 	<div  style=" width:30%">
+			<label class="control-label" for="lName">	<b>Last Name:</b>	
+			</label>
+			<label class="control-label" for="email">	<b>Email:</b>	
+			</label>	
+		</div>
+	  </fieldset>	
+	
+<div  style="margin-left:30%;margin-top:-14%">
+	<input type="text" style="background:rgba(255,0,0,.5)" class=' fPassInp' name='lName' id="lName_fPass" />  
+	<input type="text" style="background:rgba(255,0,0,.5)" class=' fPassInp' name='email' id="email_fPass" />
+</div>
+
+  </div>
+  <div class="modal-footer">
+    <button id ='fPassButtonSubmit' class="btn btn-inverse regButton" onClick="sendReminderEmail()" disabled="disabled">Send Reminder</button>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+	sendReminderEmail = function(){
+		$('#fPassButtonSubmit').attr('disabled','disabled');
+		$.post("/User/forgotEmail",{"lName":$('#lName_fPass').val(),"email":$('#email_fPass').val()},function(resp){
+			if(resp=="sentEmail"){
+				$('#fPassModal').modal('hide');
+			}
+		})
+	}
+
+	showFPassModal = function(){
+		
+			$('#fPassModal').modal('show');
+			return false;
+		}
+		//Load Modal
+		$('#fPassModal').modal({
+			keyboard:true,
+			backdrop:true,
+			show:false
+			});
+
+	$('#fPassModal').on('hidden',function(){
+		$('.fPassInp').each(function(){
+			$(this).val('');
+			$(this).css('background',"rgba(255,0,0,.5)");	
+		});
+		$('#fPassButtonSubmit').attr("disabled","disbaled");
+	})
+
+	$(".fPassInp").keyup( function() {
+			var iObj = $(this);
+		
+			switch(iObj.attr('name')){
+				case "lName":
+					if(iObj.val().length>0)iObj.css('background',"rgba(0,255,0,.5)");
+					else iObj.css('background',"rgba(255,0,0,.5)");	
+				break;
+				case "email":
+					var inpu =iObj.val();
+
+						var atpos=inpu.indexOf("@");
+						var dotpos=inpu.lastIndexOf(".");
+						if (atpos<1 || dotpos<atpos+2 || dotpos+2>=inpu.length){
+								iObj.css('background',"rgba(255,0,0,.5)");	
+							}
+						else{
+							iObj.css('background',"rgba(0,255,0,.5)");
+						} 
+				break;
+			}
+		
+			if(checkAllInputsfPass()){
+				$('#fPassButtonSubmit').removeAttr("disabled");
+			}
+			else{
+				$('#fPassButtonSubmit').attr("disabled","disbaled");
+			}
+		});	
+
+	function checkAllInputsfPass(){
+			var variable =true;
+			var curColor;
+			$('.fPassInp').each(function(){
+ 	if($(this).css('backgroundColor').substring(5,$(this).css('backgroundColor').indexOf(','))=="255"){
+					variable=false;
+				}
+			})
+				return variable;
+		}
+
+});
+</script>

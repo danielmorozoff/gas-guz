@@ -1,0 +1,35 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       SignInController.loginToSite
+GET   /welcomePage								GeneralController.welcomePage
+#POST  /saveEmail									GeneralController.saveEmail
+
+POST /signupUser								SignInController.signUpUser
+POST /User/validateEmail						SignInController.validateEmail
+POST /User/forgotEmail							SignInController.forgotEmail
+GET /passwordReset/{pubUId}/{uniqueCode}		SignInController.linkToResetPassword
+
+POST /passwordReset/resetPassword				SignInController.resetPassword
+
+POST /loginUser									SignInController.loginToSite
+GET /logout									    SignInController.logoutAndClearCache
+
+#Dashboard
+GET /mainDashboardPage				GeneralController.dashboardPg
+POST /reloadDashboardPage			AjaxPageLoad.loadSpecificPage
+
+#Modify personal Settings:
+POST /{publicId}/changePersonalInfo   			ModificationController.setUserPersonalInfo
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+GET 	/.*										GeneralController.loginToSite
+
+

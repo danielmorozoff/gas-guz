@@ -1,0 +1,36 @@
+<script>
+var AJAXloadPage;
+var pageId="navOption1";
+$(document).ready(function(){
+	//dynamically reload page
+	AJAXloadPage=function(pageId){
+		$.post('/reloadDashboardPage',{"pageId":pageId,"authTok":document.getElementsByName("authenticityToken")[0].value, "publicUserId":userID},function(resp){
+
+			var jsonPageObj = eval('('+resp+')');
+			
+			for(var keys in jsonPageObj){
+				if(keys=="pageId"){
+					pageId = jsonPageObj[keys];
+				}
+				else{
+					if(keys!='body'){
+						 $('#mainDashboardContainer').fadeOut(300,function(){
+							$(this).empty();
+							$(this).append(jsonPageObj['mainDashboardContainer']);
+							$(this).fadeIn(300);
+						});
+					}
+					else{
+						//This is the modal object that needs to sit in the body
+						var newModal = $(jsonPageObj[keys]);
+						newModal.appendTo('#'+keys);
+					}
+				}
+			}
+			if(pageId=="navOption3")$('body').css('min-width','1200px');
+			else if (pageId=="navOption4")$('body').css('min-width','1100px');
+
+		})
+	}
+});
+</script>

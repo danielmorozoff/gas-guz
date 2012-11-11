@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+/Users/danielmorozoff/Desktop/GasGuz/GasGuz_Dev/frontEndDev/FrontEndDevServer/.metadata/.plugins/org.eclipse.jdt.core
